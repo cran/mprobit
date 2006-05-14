@@ -1,0 +1,115 @@
+compare numerical and analytical derivatives based on mvnapp
+
+case 1: dim=3
+pr=mvnapp(avec,bvec,mu=0,sigma=corrmat)= 0.1011843 
+derivative wrt a_k,b_k, k=1,..., 3 
+  k= 1  lower
+   numerical:  -0.1013707 , analytic:  -0.0998994 
+  k= 1  upper
+   numerical:  0.08220675 , analytic:  0.08022892 
+  k= 2  lower
+   numerical:  -0.07445313 , analytic:  -0.07362718 
+  k= 2  upper
+   numerical:  0.03595854 , analytic:  0.0356964 
+  k= 3  lower
+   numerical:  -0.06804932 , analytic:  -0.06777879 
+  k= 3  upper
+   numerical:  0.01285362 , analytic:  0.01279624 
+derivative wrt rho(j,k)
+  (j,k)= 1 2 
+   numerical:  0.03447053 , analytic:  0.02719735 
+  (j,k)= 1 3 
+   numerical:  0.0326495 , analytic:  0.02730909 
+  (j,k)= 2 3 
+   numerical:  0.04502622 , analytic:  0.0443817 
+
+case 2: dim=5
+pr=mvnapp(avec,bvec,mu=0,sigma=corrmat)= 0.08950906 
+derivative wrt a_k,b_k, k=1,..., 5 
+  k= 1  lower
+   numerical:  -0.08757739 , analytic:  -0.08488567 
+  k= 1  upper
+   numerical:  0.07299879 , analytic:  0.06821392 
+  k= 2  lower
+   numerical:  -0.06338889 , analytic:  -0.0617042 
+  k= 2  upper
+   numerical:  0.0312522 , analytic:  0.02981672 
+  k= 3  lower
+   numerical:  -0.05742635 , analytic:  -0.05668549 
+  k= 3  upper
+   numerical:  0.01096756 , analytic:  0.01055819 
+  k= 4  lower
+   numerical:  -0.0096957 , analytic:  -0.01117202 
+  k= 4  upper
+   numerical:  0.00725341 , analytic:  0.008571891 
+  k= 5  lower
+   numerical:  -0.008453108 , analytic:  -0.009962446 
+  k= 5  upper
+   numerical:  0.006644031 , analytic:  0.008314037 
+derivative wrt rho(j,k): first order approx
+  (j,k)= 1 2 
+   numerical:  0.02775845 , analytic:  0.01928195 
+  (j,k)= 1 3 
+   numerical:  0.02593739 , analytic:  0.01976024 
+  (j,k)= 1 4 
+   numerical:  0.008977194 , analytic:  0.005731889 
+  (j,k)= 1 5 
+   numerical:  0.01064694 , analytic:  0.009581147 
+  (j,k)= 2 3 
+   numerical:  0.03504727 , analytic:  0.03365546 
+  (j,k)= 2 4 
+   numerical:  0.01025104 , analytic:  0.008852087 
+  (j,k)= 2 5 
+   numerical:  0.009004763 , analytic:  0.00762789 
+  (j,k)= 3 4 
+   numerical:  0.009087043 , analytic:  0.00790885 
+  (j,k)= 3 5 
+   numerical:  0.007976971 , analytic:  0.006686494 
+  (j,k)= 4 5 
+   numerical:  0.002643211 , analytic:  0.002884198 
+
+second order approx
+pr=mvnapp(avec,bvec,mu=0,sigma=corrmat,type=2)= 0.08242196 
+derivative wrt a_k,b_k, k=1,..., 5 
+  k= 1  lower
+   numerical:  -0.08283483 , analytic:  -0.08290919 
+  k= 1  upper
+   numerical:  0.06739236 , analytic:  0.06714335 
+  k= 2  lower
+   numerical:  -0.0607324 , analytic:  -0.06059912 
+  k= 2  upper
+   numerical:  0.02979501 , analytic:  0.02966624 
+  k= 3  lower
+   numerical:  -0.05585216 , analytic:  -0.05564555 
+  k= 3  upper
+   numerical:  0.01051207 , analytic:  0.01047088 
+  k= 4  lower
+   numerical:  -0.01062082 , analytic:  -0.01073041 
+  k= 4  upper
+   numerical:  0.008640212 , analytic:  0.008496142 
+  k= 5  lower
+   numerical:  -0.00958308 , analytic:  -0.009683537 
+  k= 5  upper
+   numerical:  0.008388889 , analytic:  0.008263824 
+derivative wrt rho(j,k): second order approx
+  (j,k)= 1 2 
+   numerical:  0.01896765 , analytic:  0.01920836 
+  (j,k)= 1 3 
+   numerical:  0.01945599 , analytic:  0.01966877 
+  (j,k)= 1 4 
+   numerical:  0.005712888 , analytic:  0.005704916 
+  (j,k)= 1 5 
+   numerical:  0.009374091 , analytic:  0.009528163 
+  (j,k)= 2 3 
+   numerical:  0.03345645 , analytic:  0.03355197 
+  (j,k)= 2 4 
+   numerical:  0.008797094 , analytic:  0.008774395 
+  (j,k)= 2 5 
+   numerical:  0.007679907 , analytic:  0.007592205 
+  (j,k)= 3 4 
+   numerical:  0.007857461 , analytic:  0.007822977 
+  (j,k)= 3 5 
+   numerical:  0.00677289 , analytic:  0.006644894 
+  (j,k)= 4 5 
+   numerical:  0.003151971 , analytic:  0.002869007 
+

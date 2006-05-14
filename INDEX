@@ -1,0 +1,13 @@
+binaryar                Multivariate Binary Test Data Set 2
+binaryex                Multivariate Binary Test Data Set 1
+exchmvn                 Exchangeable (positive) multivariate normal
+mprobit                 Maximum Likelihood for Repeated Measures
+                        Multivariate Binary Probit Model
+mvn.deriv               Derivatives of Multivariate Normal Rectangle
+                        Probabilities
+mvnapp                  MVN Rectangle Probabilities
+ordinalex               Multivariate Ordinal Test Data Set
+ordprobit               Maximum Likelihood for Repeated Measures
+                        Multivariate Ordinal Probit Model
+ordprobit.univar        Maximum Likelihood for Ordinal Probit Model
+pmnorm                  MVN Rectangle Probabilities

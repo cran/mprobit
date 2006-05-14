@@ -1,0 +1,13 @@
+useDynLib(mprobit)
+
+export(mprobit.exch, mprobit.ar, mprobit.unstr)
+export(mprobit, mprobit.formula)
+
+export(ordprobit.exch, ordprobit.ar, ordprobit.unstr)
+export(ordprobit, ordprobit.formula)
+export(ordprobit.univar)
+
+export(pmnorm)
+export(exchmvn, exchmvn.deriv.margin, exchmvn.deriv.rho)
+export(mvnapp, mvn.deriv.margin, mvn.deriv.rho)
+

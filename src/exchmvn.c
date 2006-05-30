@@ -1,18 +1,12 @@
 #include <stdio.h>
 #include <math.h>
-//#define M 20
-#define UB 6.
+#include "mprobit.h"
 /* gcc -DMAIN -o exchmvn exchmvn.c pnorms.c romberg.c phi.c -lm */
 /* mvn rectangle probability for positive exch case, */
-int mm;
-//double ww[M],xx[M],rs,r1;
-double *ww,*xx,rs,r1;
 #ifdef MAIN
 main()
 { int m,i;
-  //double rh,x[M],w[M],pr,eps;
   double rh,*x,*w,pr,eps;
-  //double exchmvn(int, double [], double [], double, double);
   double exchmvn(int, double *, double *, double, double);
   
   eps=1.e-6;

@@ -1,0 +1,52 @@
+
+# testing of C main programs in ../src with -D flags
+
+CDIR=../src
+
+MVNSRC=../src/pbnorm.c ../src/pmnorm.c ../src/pnorms.c ../src/mvnsub.c
+EXCHSRC=../src/exchmvn.c ../src/romberg.c ../src/phi.c ../src/pnorms.c
+
+mprobit.exch: ../src/mprobit.exch.c $(EXCHSRC) ../src/qnmin.c ../src/amatrix.c 
+	gcc -DMAIN3 -o $@ ../src/mprobit.exch.c $(EXCHSRC) ../src/qnmin.c ../src/amatrix.c -lm 
+
+# mprobit.exch binaryex.dat 800 210 1 .3 .2 .6 > binaryex.cout 
+
+mprobit.ar: ../src/mprobit.ar.c ../src/qnmin.c $(MVNSRC) ../src/amatrix.c  
+	gcc -DMAIN3 -o mprobit.ar ../src/mprobit.ar.c ../src/qnmin.c $(MVNSRC) ../src/amatrix.c -lm
+
+# mprobit.ar binaryar.dat 800 210 1 -.3 .4 .7 > binaryar.cout 
+
+mprobit.unstr: ../src/mprobit.unstr.c ../src/qnmin.c $(MVNSRC) ../src/amatrix.c ../src/posdef.c 
+	gcc -DMAIN3 -o mprobit.unstr ../src/mprobit.unstr.c ../src/qnmin.c $(MVNSRC) \
+	  ../src/amatrix.c ../src/posdef.c -lm
+
+# Usage: %s datafile nrec npred d th[1] ... th[np]
+# mprobit.unstr binaryex.dat 800 1 4 .3 .2 .6 .6 .6 .6 .6 .6  > binunstr.cout 
+
+
+#---------------------------------------------------------------------
+
+ordprobit.exch: ../src/ordprobit.exch.c ../src/qnmin.c $(EXCHSRC) ../src/amatrix.c 
+	gcc -DMAIN3 -o ordprobit.exch ../src/ordprobit.exch.c ../src/qnmin.c $(EXCHSRC) ../src/amatrix.c -lm
+
+# ordprobit.exch ordinalex.dat 800 210 1 3 -.5 .3 .4 0.6 > ordprobitex.cout
+
+ordprobit.ar: ../src/ordprobit.ar.c ../src/qnmin.c $(MVNSRC) ../src/amatrix.c  
+	gcc -DMAIN3 -o ordprobit.ar ../src/ordprobit.ar.c ../src/qnmin.c $(MVNSRC) ../src/amatrix.c  -lm
+
+# ordprobit.ar ordinalex.dat 800 210 1 3 -.5 .3 .4 0.7 > ordprobitar.cout
+
+ordprobit.unstr: ../src/ordprobit.unstr.c ../src/qnmin.c $(MVNSRC) ../src/amatrix.c ../src/posdef.c 
+	gcc -DMAIN3 -o ordprobit.unstr ../src/ordprobit.unstr.c ../src/qnmin.c ../src/amatrix.c\
+	   ../src/posdef.c $(MVNSRC) -lm
+
+# Usage: %s datafile nrec npred norc d cutoff1 ... cov1... r12
+# ordprobit.unstr ordinalex.dat 800 1 3 4 -.5 .3 .4 0.6 .6 .6 .6 .6 .6 > ordprobunstr.cout
+
+#---------------------------------------------------------------------
+
+# function to check positive definiteness of a symmetrix matrix
+posdef: ../src/posdef.c
+	gcc -DMAIN2 -o posdef ../src/posdef.c -lm
+
+# posdef < posdef.in

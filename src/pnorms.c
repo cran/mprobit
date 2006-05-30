@@ -48,6 +48,7 @@
 /*#include "Mathlib.h"*/
 #include <float.h>
 #include <math.h>
+#include "mprobit.h"
 
 static double c[9] = {
 	0.39894151208813466764, 8.8831497943883759412,
@@ -56,7 +57,7 @@ static double c[9] = {
 	11602.651437647350124, 9842.7148383839780218,
 	1.0765576773720192317e-8 };
 
-static double d[8] = {
+static double dz[8] = {
 	22.266688044328115691, 235.38790178262499861,
 	1519.377599407554805, 6485.558298266760755,
 	18615.571640885098091, 34900.952721145977266,
@@ -118,9 +119,9 @@ double pnorms(double x)
 		xnum = c[8] * y; xden = y;
 		for (i = 1; i <= 7; ++i) {
 			xnum = (xnum + c[i - 1]) * y;
-			xden = (xden + d[i - 1]) * y;
+			xden = (xden + dz[i - 1]) * y;
 		}
-		result = (xnum + c[7]) / (xden + d[7]);
+		result = (xnum + c[7]) / (xden + dz[7]);
 		xsq = fint(y * sixten) / sixten;
 		del = (y - xsq) * (y + xsq);
 		result = exp(-xsq * xsq * half) * exp(-del * half) * result;

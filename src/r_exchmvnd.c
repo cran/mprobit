@@ -1,15 +1,11 @@
 #include <stdio.h>
 #include <math.h>
-#define M 20
-//#define UB 7.
-#define UB 6.
-#define EPS 1.e-7
+#include "mprobit.h"
+
 /* gcc -DMAIN2 -o r_exchmvnd r_exchmvnd.c r_exchmvn.c pnorms.c phi.c romberg.c -lm */
 /* mvn rectangle probability and derivatives for positive exch case, 
    with Romberg integration */
 /* version with pointers for link to R, zero indexes are used */
-int mm,kk,ksign;
-double *ww2,*xx2,rs,r1,r32;
 #ifdef MAIN2
 main()
 { int m,i,k,ks;
@@ -85,13 +81,13 @@ void r_emvnd(int *m, double *w, double *x, double *rh, int *k, int *ks,
   double romberg(double (*)(double), double, double, double);
   int i;
   extern int mm,kk,ksign;
-  extern double *ww2,*xx2,rs,r1;
+  extern double *ww,*xx,rs,r1;
   mm=*m; kk=(*k-1); rs=sqrt(*rh); r1=sqrt(1.-(*rh)); ksign=*ks;
-  xx2=(double *) malloc(mm * sizeof(double));
-  ww2=(double *) malloc(mm * sizeof(double));
-  for(i=0;i<mm;i++) { ww2[i]=w[i]; xx2[i]=x[i]; }
+  xx=(double *) malloc(mm * sizeof(double));
+  ww=(double *) malloc(mm * sizeof(double));
+  for(i=0;i<mm;i++) { ww[i]=w[i]; xx[i]=x[i]; }
   der=romberg(r_gd,-UB,UB,*eps);
-  free(xx2); free(ww2);
+  free(xx); free(ww);
   *deriv= ksign*der;
 }
 
@@ -99,18 +95,18 @@ void r_emvnd(int *m, double *w, double *x, double *rh, int *k, int *ks,
 double r_gd(double z)
 { double pnorms(double),phi(double),a,b;
   extern int mm,kk;
-  extern double *ww2,*xx2,rs,r1;
+  extern double *ww,*xx,rs,r1;
   int i;
   double tem;
   for(i=0,tem=1.;i<mm;i++)
   { if(i!=kk)
-    { a=(ww2[i]-rs*z)/r1; b=(xx2[i]-rs*z)/r1;
+    { a=(ww[i]-rs*z)/r1; b=(xx[i]-rs*z)/r1;
       tem*=pnorms(b)-pnorms(a);
     }
     else if(ksign==-1)
-    { a=(ww2[i]-rs*z)/r1; tem*=phi(a)/r1; }
+    { a=(ww[i]-rs*z)/r1; tem*=phi(a)/r1; }
     else
-    { b=(xx2[i]-rs*z)/r1; tem*=phi(b)/r1; }
+    { b=(xx[i]-rs*z)/r1; tem*=phi(b)/r1; }
   }
   tem*=phi(z);
   return(tem);
@@ -126,12 +122,12 @@ void r_emvndrh(int *m, double *w, double *x, double *rh, double *eps,
   int i,k;
   double *t;
   extern int mm;
-  extern double *ww2,*xx2,rs,r1,r32;
+  extern double *ww,*xx,rs,r1,r32;
   mm=*m; rs=sqrt(*rh); r1=sqrt(1.-(*rh)); r32=r1*(1.-(*rh));
-  xx2=(double *) malloc(mm * sizeof(double));
-  ww2=(double *) malloc(mm * sizeof(double));
+  xx=(double *) malloc(mm * sizeof(double));
+  ww=(double *) malloc(mm * sizeof(double));
   t=(double *) malloc(mm * sizeof(double));
-  for(i=0;i<mm;i++) { ww2[i]=w[i]; xx2[i]=x[i]; }
+  for(i=0;i<mm;i++) { ww[i]=w[i]; xx[i]=x[i]; }
   if((*rh)>=0.) der=romberg(r_grh,-UB,UB,*eps);
   else /* rho=0 */
   { for(i=0;i<mm;i++) t[i]=pnorms(x[i])-pnorms(w[i]);
@@ -145,7 +141,7 @@ void r_emvndrh(int *m, double *w, double *x, double *rh, double *eps,
     }
     der=.5*sum;
   }
-  free(xx2); free(ww2); free(t);
+  free(xx); free(ww); free(t);
   *deriv=der;
 }
 
@@ -153,21 +149,21 @@ void r_emvndrh(int *m, double *w, double *x, double *rh, double *eps,
 double r_grh(double z)
 { double pnorms(double),phi(double),a,b;
   extern int mm;
-  extern double *ww2,*xx2,rs,r1,r32;
+  extern double *ww,*xx,rs,r1,r32;
   int i,k;
   double tem,sum,tem2,*t;
 
   t=(double *) malloc(mm * sizeof(double));
   for(i=0;i<mm;i++) 
-  { a=(ww2[i]-rs*z)/r1; b=(xx2[i]-rs*z)/r1;
+  { a=(ww[i]-rs*z)/r1; b=(xx[i]-rs*z)/r1;
     t[i]=pnorms(b)-pnorms(a);
   }
   for(k=0,sum=0.;k<mm;k++)
   { for(i=0,tem=1.;i<mm;i++)
     { if(i!=k) { tem*=t[i]; }
       else
-      { a=(ww2[i]-rs*z)/r1; b=(xx2[i]-rs*z)/r1;
-        tem2=phi(b)*(xx2[i]-z/rs)-phi(a)*(ww2[i]-z/rs);
+      { a=(ww[i]-rs*z)/r1; b=(xx[i]-rs*z)/r1;
+        tem2=phi(b)*(xx[i]-z/rs)-phi(a)*(ww[i]-z/rs);
         tem2*=.5/r32;
         tem*=tem2;
       }

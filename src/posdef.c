@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <malloc.h>
 #include <math.h>
-#define M 20
+#include "mprobit.h"
+
 /* check for positive definiteness of a symmetric matrix */
 #ifdef MAIN2
 main(int argc, char *argv[])

@@ -19,7 +19,7 @@ covariance matrices are obtain using the quasi-Newton method in
 This is the same method as in the function optim() in R.
 
 The C code can also be compiled to get programs to run from the
-Unix command line. See the file src/cmakefile.
+Unix command line. See the file tests/cmakefile.
 The C code can be modified for multivariate probit model for a
 multivariate binary response with several different binary variables.
 In this case there are more regression parameters, and an estimating

@@ -17,19 +17,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <malloc.h>
-#include "mvn.h"
-
-#define MAXP 24
-double **x;     
-int *y, nn, nc, ncl, norc, d;        
-/*
-   x    -- data matrix
-   y    -- response variable
-   nn   -- total number of individuals 
-   nc   -- number of covariate
-   ncl  -- number of unique clusters 
-   norc   -- number of ordinal categories
-*/
+#include "mprobit.h"
 
 #ifdef MAIN3
 main(int argc, char *argv[])

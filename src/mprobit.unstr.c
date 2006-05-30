@@ -10,19 +10,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <malloc.h>
-#include "mvn.h"
-
-#define MAXP 24
-
-double **x;     
-int *y, nn, nc, ncl, d;
-/* x    -- data matrix
-   y    -- binary response variable
-   nn   -- total number of individuals 
-   nc   -- number of covariates
-   d    -- number of repeated measures of each culster
-   ncl  -- number of clusters 
-*/
+#include "mprobit.h"
 
 #ifdef MAIN3
 main(int argc, char *argv[])

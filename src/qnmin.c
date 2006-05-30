@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <malloc.h>
 #include <math.h>
+#include "mprobit.h"
+
 /* quasi-newton minimizer from Nash, "Compact Numerical
    Methods for Computers" (1979), alg 21.
 */
-#define MAXP 24
 /* malloc version */
 #ifdef NOALLOC
 void qnmin(int np, double b[], double h[][MAXP], double *p0, int nevals, 

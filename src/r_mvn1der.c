@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-#include "mvn.h"
+#include "mprobit.h"
 /* derivatives of mvn rectangle probability */
 /* version with pointers for link to R, zero indexes are used */
 /* gcc -DMAIN2 -o r_mvn1der r_mvn1der.c pnorms.c mvnsub.c pmnorm.c pbnorm.c phi.c -lm */

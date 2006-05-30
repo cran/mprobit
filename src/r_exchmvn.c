@@ -1,11 +1,10 @@
 #include <stdio.h>
 #include <math.h>
-#define UB 6.
+#include "mprobit.h"
+
 /* gcc -DMAIN -o r_exchmvn r_exchmvn.c pnorms.c phi.c romberg.c -lm */
 /* mvn rectangle probability for positive exch case, */
 /* version with pointers for link to R, zero indexes are used */
-int mm;
-double *ww2,*xx2,rs,r1;
 #ifdef MAIN
 main()
 { int m,i;
@@ -37,23 +36,23 @@ void r_exchmvn(int *m, double *w, double *x, double *rh, double *eps, double *pr
   double romberg(double (*)(double), double, double, double);
   int i;
   extern int mm;
-  extern double *ww2,*xx2,rs,r1;
+  extern double *ww,*xx,rs,r1;
   mm=*m; rs=sqrt(*rh); r1=sqrt(1.-(*rh));
-  xx2=(double *) malloc(mm * sizeof(double));
-  ww2=(double *) malloc(mm * sizeof(double));
-  for(i=0;i<mm;i++) { ww2[i]=w[i]; xx2[i]=x[i];}
+  xx=(double *) malloc(mm * sizeof(double));
+  ww=(double *) malloc(mm * sizeof(double));
+  for(i=0;i<mm;i++) { ww[i]=w[i]; xx[i]=x[i];}
   *pr=romberg(r_g,-UB,UB,*eps);
-  free(xx2); free(ww2);
+  free(xx); free(ww);
 }
 
 double r_g(double z)
 { double pnorms(double),phi(double),a,b;
   extern int mm;
-  extern double *ww2,*xx2,rs,r1;
+  extern double *ww,*xx,rs,r1;
   int i;
   double tem;
   for(i=0,tem=1.;i<mm;i++)
-  { a=(ww2[i]-rs*z)/r1; b=(xx2[i]-rs*z)/r1;
+  { a=(ww[i]-rs*z)/r1; b=(xx[i]-rs*z)/r1;
     tem*=pnorms(b)-pnorms(a);
   }
   tem*=phi(z);

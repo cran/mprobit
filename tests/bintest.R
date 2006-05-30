@@ -74,8 +74,8 @@ for(iii in 1:2)
   idel=idel*4
 
   datsub=dat[-idel,]
-  xsub=as.vector(datsub[,3])
-  ysub=as.integer(datsub[,4])
+  xsub=as.vector(datsub[,2])
+  ysub=as.integer(datsub[,3])
   idsub=as.integer(datsub[,1])
   cat("mprobit.exch: subset, unequal cluster sizes\n")
   sub.exch <- mprobit.exch(xsub,ysub,idsub,iprint=1)

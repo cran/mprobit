@@ -13,22 +13,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <malloc.h>
-#include "mvn.h"
-
-#define MAXP 24
-double **x;     
-int *y, *dvec, *dstart, nn, nc, dmax, ncl, norc; 
-/*
-   x     -- data matrix
-   y     -- ordinal variable
-   nn    -- total number of individuals 
-   nc    -- number of covariate
-   dmax  --  max cluster size
-   ncl   -- number of unique clusters 
-   dvec  -- a cluster size vector
-   dstart -- the starting point of each unique cluster
-   norc   -- number of ordinal categories
-*/
+#include "mprobit.h"
 
 #ifdef MAIN3
 main(int argc, char *argv[])

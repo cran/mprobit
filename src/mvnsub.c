@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include "mvn.h"
+#include "mprobit.h"
 
 
 void mvn1(int m, double w[], double x[], double r[][M], int nsim, double eps, 

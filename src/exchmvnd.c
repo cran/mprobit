@@ -1,23 +1,13 @@
 #include <stdio.h>
 #include <math.h>
-//#define M 20
-//#define UB 7.
-#define UB 6.
-#define EPS 1.e-7
+#include "mprobit.h"
 /* gcc -DMAIN2 -o exchmvnd exchmvnd.c exchmvn.c pnorms.c phi.c romberg.c -lm */
 /* mvn rectangle probability and derivatives for positive exch case, 
    with Romberg integration */
-int mm,kk,ksign;
-//double ww[M],xx[M],rs,r1,r32;
-double *ww,*xx,rs,r1,r32;
 #ifdef MAIN2
 main()
 { int m,i;
-  //double rh,a[M],b[M],pr,eps;
   double rh,*a,*b,pr,eps;
-  //double exchmvn(int, double [], double [], double, double);
-  //double emvnd(int, double [], double [], double, int, int, double);
-  //double emvndrh(int, double [], double [], double, double);
   double exchmvn(int, double *, double *, double, double);
   double emvnd(int, double *, double *, double, int, int, double);
   double emvndrh(int, double *, double *, double, double);
@@ -86,7 +76,6 @@ double emvnd(int m, double *w, double *x, double rh, int k, int ks,
   double romberg(double (*)(double), double, double, double);
   int i;
   extern int mm,kk,ksign;
-  //extern double ww[M],xx[M],rs,r1;
   extern double *ww,*xx,rs,r1;
   mm=m; kk=k; rs=sqrt(rh); r1=sqrt(1.-rh); ksign=ks;
   xx=(double *) malloc((mm+1) * sizeof(double));
@@ -121,14 +110,12 @@ double gd(double z)
 
 
 /* P(Z_j\in (a_j,b_j)): deriv wrt rho */
-//double emvndrh(int m, double w[], double x[], double rh, double eps)
 double emvndrh(int m, double *w, double *x, double rh, double eps)
 { double grh(double),der,*t,tem,sum;  // t[M]
   double romberg(double (*)(double), double, double, double);
   double pnorms(double),phi(double);
   int i,k;
   extern int mm;
-  //extern double ww[M],xx[M],rs,r1,r32;
   extern double *ww,*xx,rs,r1,r32;
   mm=m; rs=sqrt(rh); r1=sqrt(1.-rh); r32=r1*(1.-rh);
   xx=(double *) malloc((mm+1) * sizeof(double));
@@ -156,10 +143,8 @@ double emvndrh(int m, double *w, double *x, double rh, double eps)
 double grh(double z)
 { double pnorms(double),phi(double),a,b;
   extern int mm;
-  //extern double ww[M],xx[M],rs,r1,r32;
   extern double *ww,*xx,rs,r1,r32;
   int i,k;
-  //double tem,sum,tem2,t[M];
   double tem,sum,tem2,*t;
   // how to handle the limit as rho->0?
   t=(double *) malloc((mm+1) * sizeof(double));

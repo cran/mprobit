@@ -8,22 +8,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <malloc.h>
-#include "mvn.h"
-
-#define MAXP 24
-
-double **x;     
-int nn,nc,dmax,ncl,*y,*dvec,*dstart;        
-
-/* x    -- data matrix
-   y    -- response variable
-   nn   -- total number of individuals 
-   nc   -- number of covariate
-   dmax  --  max cluster size
-   ncl  -- number of unique clusters 
-   dvec -- a cluster size vector
-   dstart -- the starting point of each unique cluster
-*/
+#include "mprobit.h"
 
 #ifdef MAIN3
 main(int argc, char *argv[])

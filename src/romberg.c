@@ -1,8 +1,8 @@
 #include <math.h>
 #include <stdio.h>
-//#define S 10
+#include "mprobit.h"
+
 // not getting convergence for some integrals (of derivatives) when rho>=.6?
-#define S 12
 
 /* Romberg integration (one-dimensional integral) with relative convergence
    criterion, this integration method should be mentioned in any

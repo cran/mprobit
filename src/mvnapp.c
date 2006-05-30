@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-#include "mvn.h"
+#include "mprobit.h"
 /* first order approx., cond. exp. */
 /* second order approx., cond. exp. */
 void mvnapp(int *type, int *m0, double w0[], double x0[], double corr[],

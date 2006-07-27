@@ -185,7 +185,8 @@ void nllkexch(int np, double *th, double *fnv)
   nlk=0.; eps=1.e-6; 
   b0=th[1]; for(jc=1;jc<=nc;jc++)  b[jc]=th[jc+1];
   rr=th[np];
-  if(rr<=-1. || rr>=1.) { *fnv=1.e10; return; }
+  //if(rr<=-1. || rr>=1.) { *fnv=1.e10; return; }
+  if(rr<0. || rr>=1.) { *fnv=1.e10; return; }
  
   for(i=1;i<=ncl;i++)  
   { d = dvec[i];       

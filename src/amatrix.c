@@ -1,4 +1,4 @@
-#include <malloc.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 /* allocate matrices such that rows occupy contiguous space */

@@ -1,5 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
+
 #include "mprobit.h"
 /* first order approx., cond. exp. */
 /* second order approx., cond. exp. */

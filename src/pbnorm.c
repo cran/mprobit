@@ -1,9 +1,13 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
+
 /* 
    Bivariate normal routine from: 
    Donnelly, T.G. [1973],  Algorithm 462: bivariate normal distribution, 
    Communications of the association for computing machinery, 16, 638. 
 */
+
 double bivnor(double ah, double ak, double r)
 {  double twopi,b,gh,gk,rr,con,sqr,wh,wk,h2,a2,ex,h4,w2,sn,sp,ap,cn,t;
    double gw,g2,s2,s1,conex,sgn;

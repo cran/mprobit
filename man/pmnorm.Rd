@@ -29,7 +29,7 @@ pmnorm(lb, ub, mu, sigma, eps = 1.e-05)
 }
 }
 \value{
-\item{out}{
+\item{pr}{
   probability of the multivariate normal rectangle region
 }
 \item{perr}{

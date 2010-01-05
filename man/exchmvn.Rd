@@ -41,9 +41,9 @@ exchmvn.deriv.rho(lb, ub, rh, eps = 1.e-06)
   =-1 for deriv of exchmvn(lb,ub,rh) with respect to lb[k]
   =+1 for deriv of exchmvn(lb,ub,rh) with respect to ub[k]
 }
+}
 \value{
   rectangle probability or a derivative
-}
 }
 \references{
   Kotz S and Johnson NL (1972). Continuous Multivariate Distributions. Wiley, New York,

@@ -1,8 +1,11 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 #include "mprobit.h"
+
 /* gcc -DMAIN -o exchmvn exchmvn.c pnorms.c romberg.c phi.c -lm */
 /* mvn rectangle probability for positive exch case, */
+
 #ifdef MAIN
 main()
 { int m,i;

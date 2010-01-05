@@ -1,10 +1,13 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 #include "mprobit.h"
+
 /* derivatives of mvn rectangle probability */
 /* version with pointers for link to R, zero indexes are used */
 /* gcc -DMAIN2 -o r_mvn1der r_mvn1der.c pnorms.c mvnsub.c pmnorm.c pbnorm.c phi.c -lm */
 /* first order approx */
+
 #ifdef MAIN2
 main()
 { int m,i,j,nsim,ifail,m2,k,ksign;

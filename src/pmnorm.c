@@ -1,6 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 #include "mprobit.h"
+
 /* Schervish, m.j. [1984]. multivariate normal probabilities 
    with error bound. {Appl. Statist.  33} 81-94. */
 

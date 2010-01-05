@@ -1,5 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
+
 /*  program for link from R/Splus to mulnor */
 void mvnscher(double ub[], double lb[], double sig0[], double *eps0, int *n0, 
    int inf0[], double *prob, double *bound, int *ifault)

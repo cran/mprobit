@@ -1,9 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 #include "mprobit.h"
+
 /* gcc -DMAIN2 -o exchmvnd exchmvnd.c exchmvn.c pnorms.c phi.c romberg.c -lm */
 /* mvn rectangle probability and derivatives for positive exch case, 
    with Romberg integration */
+
 #ifdef MAIN2
 main()
 { int m,i;
